@@ -1,1 +1,1 @@
-this personal website is created using html , css and js 
+this personal portfolio website is created using html , css and js 
