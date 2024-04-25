@@ -72,7 +72,7 @@ color: rgb(227, 35, 35);
 margin-left: 18%;
 margin-top: 8%;
 }
-.text.sec-text:before{
+/* .text.sec-text:before{
     content: "";
     position: absolute;
     top: 0;
@@ -90,7 +90,7 @@ margin-top: 8%;
     100%{
          left: 0%;
     }
-}
+} */
 .bdy-text{
     position: absolute;
     margin-top: 18%;
