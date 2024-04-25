@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Animation</title>
+<style>
+  #text-container {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 100px;
+  }
+</style>
+</head>
+<body>
+
+<div id="text-container"></div>
+
+<script>
+  // Texts to animate
+  const texts = ["First Text", "Second Text", "Third Text"];
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function animateText() {
+    const currentText = texts[textIndex];
+    const textContainer = document.getElementById("text-container");
+
+    if (isDeleting) {
+      textContainer.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      textContainer.textContent = currentText.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    if (!isDeleting && charIndex === currentText.length + 1) {
+      // Wait before start deleting
+      setTimeout(() => {
+        isDeleting = true;
+      }, 1000);
+    } else if (isDeleting && charIndex === 0) {
+      // Move to the next text
+      isDeleting = false;
+      textIndex = (textIndex + 1) % texts.length;
+
+      // Wait before start typing again
+      setTimeout(() => {
+        animateText();
+      }, 500);
+    }
+
+    // Speed of typing/deleting
+    const speed = isDeleting ? 200 : 300;
+    setTimeout(animateText, speed);
+  }
+
+  // Start the animation
+  animateText();
+</script>
+
+</body>
+</html>
